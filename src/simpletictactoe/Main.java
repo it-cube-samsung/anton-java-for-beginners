@@ -1,117 +1,228 @@
 package simpletictactoe;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        public static boolean isWin = false;
 
-    public static void main(String[] args) {
+        char emptyCell = ' ';
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        char[][] field = {{' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '}};
+        Scanner in = new Scanner(System.in);
 
-        int randomPlayer = (int) (Math.random() * 2 + 1);
-        if (randomPlayer == 1)
-            System.out.println("Player1 ходит первым!" + '\n');
-        else System.out.println("Player2 ходит первым!" + '\n');
-
-        System.out.println("Введите число от 1 до 9, чтобы сделать Ваш ход: " + '\n');
-
-        char[][] field = {{'1', '2', '3'},
-                {'4', '5', '6'},
-                {'7', '8', '9'}};
-
-        char crossOrZero;
-
-        int switcher = 0; // переключатель между первым и вторым игроком
         while (true) {
 
-            if (switcher % 2 == 0)
-                crossOrZero = 'x';
-            else crossOrZero = 'o';
-
-            printField(field);
-
-            int num;
-            try {
-                num = Integer.parseInt(reader.readLine()); // запрет ввода символов, отличных от чисел
-            } catch (NumberFormatException | IOException e) {
-                System.out.println("Число, только число!");
-                continue;
-            }
-
-            if (Arrays.deepToString(field).contains(Integer.toString(num)) && num <= 9 && num > 0) {
-                switch (num) {
-                    case 1:
-                        field[0][0] = crossOrZero;
-                        break;
-                    case 2:
-                        field[0][1] = crossOrZero;
-                        break;
-                    case 3:
-                        field[0][2] = crossOrZero;
-                        break;
-                    case 4:
-                        field[1][0] = crossOrZero;
-                        break;
-                    case 5:
-                        field[1][1] = crossOrZero;
-                        break;
-                    case 6:
-                        field[1][2] = crossOrZero;
-                        break;
-                    case 7:
-                        field[2][0] = crossOrZero;
-                        break;
-                    case 8:
-                        field[2][1] = crossOrZero;
-                        break;
-                    case 9:
-                        field[2][2] = crossOrZero;
-                        break;
-                }
+            System.out.println("введите место X от 1 до 3:");
+            int b = in.nextInt() - 1;
+            if (b < 0 || b > 2) {
+                System.out.println("введите место от 1 до 3:");
+                System.exit(b);
             } else {
-                System.out.println("Введите число из оставшихся на поле!");
-                continue;
-            }
+                System.out.println("введите место O от 1 до 3:");
+                int a = in.nextInt() - 1;
+                if (a < 0 || a > 2) {
+                    System.out.println("введите место от 1 до 3:");
+                    System.exit(a);
+                } else {
 
-            checkingForMatch(field);
 
-            if (isWin) {
-                System.out.println("YOU WIN!!!");
-                printField(field);
-                break;
-            }
-            switcher++;
-        }
-    }
+                    if (field[b][a] != ' ') {
+                        System.exit(a);
+                        System.out.println("эта клетка занита");
+                    } else {
+                        field[b][a] = 'x';
 
-    public static void printField(char[][] field) { // печать поля
+                        System.out.println("_______");
+                        for (int i = 0; i < 3; i++) {
+                            System.out.print(field[i][0] + " ");
+                            for (int j = 0; j < 3; j++) {
+                                System.out.print(field[i][j] + " ");
+                            }
+                            System.out.println();
+                        }
+                        System.out.println("_______");
 
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                if (j != 2)
-                    System.out.print(field[i][j] + "|");
-                else System.out.print(field[i][j]);
-            }
-            System.out.println();
-        }
-    }
+                        String win = "";
+                        int u = 2;
+                        if (field[0][0] == field[1][1] && field[0][0] == field[2][2] && field[0][0] != emptyCell) {
 
-    public static void checkingForMatch(char[][] field) { // проверка на совпадение трёх элементов
+                            System.out.println("win " + field[0][0]);
+                            System.exit(u);
+                            u = 1;
 
-        for (int i = 0; i < field.length; i++) {
-            if (field[i][0] == field[i][1] && field[i][0] == field[i][2] || // сравнение по горизонтали
-                    field[0][i] == field[1][i] && field[0][i] == field[2][i] || // сравнение по вертикали
-                    field[0][0] == field[1][1] && field[0][0] == field[2][2] || // сравнение по
-                    field[2][0] == field[1][1] && field[2][0] == field[0][2]) { // диагоналям
 
-                isWin = true;
-                break;
+                        }
+                        if (field[0][2] == field[1][1] && field[1][1] == field[2][0] && field[0][2] != emptyCell) {
+
+                            System.out.println("win " + field[0][2]);
+                            System.exit(u);
+                            u = 1;
+                        }
+                        if (field[0][0] == field[1][0] && field[1][0] == field[0][2] && field[0][0] != emptyCell) {
+
+                            System.out.println("win " + field[1][0]);
+                            System.exit(u);
+                            u = 1;
+                        }
+                        if (field[0][1] == field[1][1] && field[1][1] == field[2][1] && field[0][1] != emptyCell) {
+
+                            System.out.println("win " + field[2][1]);
+                            System.exit(u);
+                            u = 1;
+                        }
+                        if (field[0][2] == field[1][2] && field[1][2] == field[2][2] && field[0][2] != emptyCell) {
+
+                            System.out.println("win " + field[1][2]);
+                            System.exit(u);
+                            u = 1;
+                        }
+                        if (field[0][0] == field[0][1] && field[0][1] == field[0][2] && field[0][0] != emptyCell) {
+
+                            System.out.println("win " + field[0][1]);
+                            System.exit(u);
+                            u = 1;
+                        }
+                        if (field[1][0] == field[1][1] && field[1][1] == field[2][1] && field[1][0] != emptyCell) {
+
+                            System.out.println("win " + field[1][1]);
+                            System.exit(u);
+                            u = 1;
+                        }
+                        if (field[2][0] == field[2][1] && field[2][1] == field[2][2] && field[2][0] != emptyCell) {
+
+                            System.out.println("win " + field[2][0]);
+                            System.exit(u);
+                            u = 1;
+                        }
+
+
+
+
+
+
+
+                        System.out.println("введите место 0 от 1 до 3:");
+                        int c = in.nextInt() - 1;
+                        if (c < 0 || c > 2) {
+                            System.out.println("введите место от 1 до 3:");
+                            System.exit(c);
+                        } else {
+
+
+                            System.out.println("введите место 0 от 1 до 3:");
+                            int d = in.nextInt() - 1;
+                            if (d < 0 || d > 2) {
+                                System.out.println("введите место от 1 до 3:");
+                                System.exit(d);
+                            } else {
+
+
+                                if (field[c][d] != ' ') {
+                                    System.exit(c);
+                                    System.out.println("эта клетка занита");
+                                } else {
+
+                                    field[c][d] = '0';
+
+                                    System.out.println("________________");
+                                    for (int i = 0; i < 3; i++) {
+                                        System.out.print(field[i][0] + "|  ");
+                                        for (int j = 0; j < 3; j++) {
+                                            System.out.print(field[i][j] + "  ");
+                                        }
+                                        System.out.println();
+                                    }
+                                    System.out.println("________________");
+
+
+                                    if (field[0][0] == field[1][1] && field[0][0] == field[2][2] && field[0][0] != emptyCell) {
+
+                                        System.out.println("win " + field[0][0]);
+                                        u = 1;
+
+
+                                    }
+                                    if (field[0][2] == field[1][1] && field[1][1] == field[2][0] && field[0][2] != emptyCell) {
+
+                                        System.out.println("win " + field[0][2]);
+                                        System.exit(u);
+                                        u = 1;
+                                    }
+                                    if (field[0][0] == field[1][0] && field[1][0] == field[0][2] && field[0][0] != emptyCell) {
+
+                                        System.out.println("win " + field[1][0]);
+                                        System.exit(u);
+                                        u = 1;
+                                    }
+                                    if (field[0][1] == field[1][1] && field[1][1] == field[2][1] && field[0][1] != emptyCell) {
+
+                                        System.out.println("win " + field[2][1]);
+                                        System.exit(u);
+                                        u = 1;
+                                    }
+                                    if (field[0][2] == field[1][2] && field[1][2] == field[2][2] && field[0][2] != emptyCell) {
+
+                                        System.out.println("win " + field[1][2]);
+                                        System.exit(u);
+                                        u = 1;
+                                    }
+                                    if (field[0][0] == field[0][1] && field[0][1] == field[0][2] && field[0][0] != emptyCell) {
+
+                                        System.out.println("win " + field[0][1]);
+                                        System.exit(u);
+                                        u = 1;
+                                    }
+                                    if (field[1][0] == field[1][1] && field[1][1] == field[2][1] && field[1][0] != emptyCell) {
+
+                                        System.out.println("win " + field[1][1]);
+                                        System.exit(u);
+                                        u = 1;
+                                    }
+                                    if (field[2][0] == field[2][1] && field[2][1] == field[2][2] && field[2][0] != emptyCell) {
+
+                                        System.out.println("win " + field[2][0]);
+                                        System.exit(u);
+                                        u = 1;
+                                    }
+                                    if (u != 2) {
+
+
+
+                                        if (field[0][0] != ' ') {
+                                            if (field[0][1] != ' ') {
+                                                if (field[1][0] != ' ') {
+                                                    if (field[0][2] != ' ') {
+                                                        if (field[1][1] != ' ') {
+                                                            if (field[1][2] != ' ') {
+                                                                if (field[2][0] != ' ') {
+                                                                    if (field[2][1] != ' ') {
+                                                                        if (field[2][2] != ' ') {
+                                                                            System.out.println("ничья мест нету");
+                                                                            System.exit(u);
+
+
+                                                                        }
+                                                                    }
+
+
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+                }
             }
         }
     }

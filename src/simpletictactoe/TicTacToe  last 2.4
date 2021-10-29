@@ -1,4 +1,7 @@
-  public static void main(String[] args) {
+import java.util.Scanner;
+
+public class Task1 {
+    public static void main(String[] args) {
 
         char emptyCell = ' ';
 
@@ -32,7 +35,7 @@
                         System.out.println("_______");
                         for (int i = 0; i < 3; i++) {
                             for (int j = 0; j < 3; j++) {
-                                System.out.print(field[i][j] + "  ");
+                                System.out.print(field[i][j] + "|  ");
                             }
                             System.out.println();
                         }
@@ -183,21 +186,21 @@
 
 
 
-                                    if (field[0][0] != ' ') {
-                                        if (field[0][1] != ' ') {
-                                            if (field[1][0] != ' ') {
-                                                if (field[0][2] != ' ') {
-                                                    if (field[1][1] != ' ') {
-                                                        if (field[1][2] != ' ') {
-                                                            if (field[2][0] != ' ') {
-                                                                if (field[2][1] != ' ') {
-                                                                    if (field[2][2] != ' ') {
-                                                                        System.out.println("ничья мест нету");
-                                                                        System.exit(u);
+                                        if (field[0][0] != ' ') {
+                                            if (field[0][1] != ' ') {
+                                                if (field[1][0] != ' ') {
+                                                    if (field[0][2] != ' ') {
+                                                        if (field[1][1] != ' ') {
+                                                            if (field[1][2] != ' ') {
+                                                                if (field[2][0] != ' ') {
+                                                                    if (field[2][1] != ' ') {
+                                                                        if (field[2][2] != ' ') {
+                                                                            System.out.println("ничья мест нету");
+                                                                            System.exit(u);
 
 
+                                                                        }
                                                                     }
-                                                                }
 
 
                                                                 }

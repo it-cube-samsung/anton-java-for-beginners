@@ -8,16 +8,17 @@ public class tictactoe2 {
         int k = 3;
         System.out.println("введите");
         String cells = in.nextLine();
-        System.out.println("-----------");
+        System.out.println("---------");
         for(int i = 0; i < 3; i++){
-            System.out.println("| ");
+            System.out.print("| ");
             for (; j < k; j++){
-                System.out.print(cells.charAt(j) + "");
+
+                System.out.print(cells.charAt(j) + " ");
             }
             k += 3;
             System.out.println("|");
         }
-        System.out.println("----------");
+        System.out.println("---------");
 
     }
 }

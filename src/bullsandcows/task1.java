@@ -1,6 +1,6 @@
 package bullsandcows;
 
-public class Main {
+public class task1 {
     public static void main(String[] args) {
         System.out.println("The secret code is prepared: ****.\n" +
                 "Turn 1. Answer:\n" +

@@ -16,7 +16,7 @@ public class tictactoe2 {
                 System.out.print(cells.charAt(j) + " ");
             }
             k += 3;
-            System.out.println("|");
+            System.out.print("|");
         }
         System.out.println("---------");
 

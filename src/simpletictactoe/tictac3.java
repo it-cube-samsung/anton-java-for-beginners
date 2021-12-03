@@ -8,9 +8,9 @@ public class tictac3 {
         int k = 3;
         System.out.println("введите");
         String cells = in.nextLine();
-        System.out.println("-----------");
+        System.out.print("-----------");
         for(int i = 0; i < 3; i++){
-            System.out.println("| ");
+            System.out.print("| ");
             for (; j < k; j++){
                 System.out.print(cells.charAt(j) + "");
             }

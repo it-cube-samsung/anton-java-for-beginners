@@ -6,11 +6,11 @@ public class work4 {
 
         Scanner in = new Scanner(System.in);
         int Cup = 9;
-        int j;
+
         int w2 = 0;
         int с2 = 0;
         int m2 = 0;
-        int cu2 = 0;
+
         int l = 0;
         int w = 0;
         int q = 0;
@@ -19,7 +19,7 @@ public class work4 {
 
         int mm;
 
-        int cof;
+
         int v = 0;
 
         int water = 2000;
@@ -37,7 +37,7 @@ public class work4 {
         while (true) {
             System.out.println("\n" +
 
-                    "это кофе маш");
+                    "The coffee machine has:");
             water = 2500; // 2 литра воды в кофе варке
             milk = 500; // 0.5 литров молока в кофе варке
             coffee = 150; // 0.15 грамм коффе
@@ -66,19 +66,19 @@ public class work4 {
             int qa, ws, ed;
 
 
-            System.out.println("Write how many ml of water the coffee machine has: " + water2);
-            System.out.println("Write how many ml of milk the coffee machine has: " + milk2);
-            System.out.println("Write how many ml of coffee the coffee machine has: " + coffee2);
-            System.out.println("Write how cup the coffee machine has: " + cup2);
-            System.out.println("Write how money the coffee machine has: " + l);
+
+            System.out.println(water2 +" ml of water: "  );
+            System.out.println(milk2 + " ml of milk ");
+            System.out.println(coffee2 + " g of coffee beans" );
+            System.out.println(cup2 +" disposable cups " );
+            System.out.println( "$" + l + " of money" );
 
 
             if (true) {
 
 
                 System.out.println("\n" +
-                        "что вы хотите сделать" +
-                        " buy,fill,take");
+                        "Write action (buy, fill, take):");
             }
 
             String p = in.nextLine();
@@ -87,7 +87,7 @@ public class work4 {
 
             if (p.equals(buy)) {
 
-                System.out.println("espresso,latte,cappuccino");
+                System.out.println("\n What do you want to buy? espresso, latte, cappuccino: ");
                 String a = in.nextLine();
                 String expr = "espresso";
 
@@ -110,11 +110,6 @@ public class work4 {
                     water2 = water3;
                     coffee2 = coffee3;
                     milk2 = milk3;
-                    if (water2 < water3) {
-                        System.out.println("EROR");
-                    } else if (water2 > water3) {
-                        System.out.println("ok");
-                    }
 
 
                     System.out.println(esm + " $ цена");

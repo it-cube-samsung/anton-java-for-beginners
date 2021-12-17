@@ -2,7 +2,7 @@ package simpletictactoe;
 
 import java.util.Scanner;
 
-public class Main {
+public class Task5 {
     public static void main(String[] args) {
 
         char emptyCell = ' ';

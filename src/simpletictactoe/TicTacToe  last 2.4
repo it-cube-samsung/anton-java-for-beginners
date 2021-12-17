@@ -1,8 +1,6 @@
-package simpletictactoe;
-
 import java.util.Scanner;
 
-public class Main {
+public class Task1 {
     public static void main(String[] args) {
 
         char emptyCell = ' ';
@@ -36,9 +34,8 @@ public class Main {
 
                         System.out.println("_______");
                         for (int i = 0; i < 3; i++) {
-                            System.out.print(field[i][0] + " ");
                             for (int j = 0; j < 3; j++) {
-                                System.out.print(field[i][j] + " ");
+                                System.out.print(field[i][j] + "|  ");
                             }
                             System.out.println();
                         }
@@ -126,15 +123,14 @@ public class Main {
 
                                     field[c][d] = '0';
 
-                                    System.out.println("________________");
+                                    System.out.println("_______");
                                     for (int i = 0; i < 3; i++) {
-                                        System.out.print(field[i][0] + "|  ");
                                         for (int j = 0; j < 3; j++) {
                                             System.out.print(field[i][j] + "  ");
                                         }
                                         System.out.println();
                                     }
-                                    System.out.println("________________");
+                                    System.out.println("_______");
 
 
                                     if (field[0][0] == field[1][1] && field[0][0] == field[2][2] && field[0][0] != emptyCell) {
